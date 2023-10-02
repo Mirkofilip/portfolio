@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+@font-face {
+  font-family: 'Deadpool-Movie';
+    src:  url('./fonts//Deadpool-Movie.ttf.woff') format('woff'),
+    url('./fonts//Deadpool-Movie.ttf.eot');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #a0a0a0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.title {
+  font-family: 'Deadpool-Movie';
+  font-size: clamp(1.88rem, calc(-1.05rem + 14.63vw), 8.38rem);
+}
+
+h4,
+.subtitle {
+  font-family: 'Deadpool-Movie';
+  color: black;
+}
+
+.linkCard {
+  position: relative;
+  perspective: 400px;
+  transition: all .2s linear;
+}
+
+.linkCard:hover .card {
+  transform: rotateX(45deg);
+  filter: blur(3px);
+  box-shadow: 0px 6px 10px #00000047;
+}
+
+.card {
+  transition: all .4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+}
+
+.frameCard {
+  opacity: 0;
+  position: absolute;
+  height: 270px;
+  overflow: auto;
+  z-index: 1;
+  width: 70%;
+  top: -100px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  box-shadow: 2px 20px 11px 0px #0000004d;
+  transition: all .2s linear;
+  border-radius: 15px;
+}
+
+.linkCard:hover {
+  z-index: 9999999;
+}
+
+.linkCard:hover .frameCard {
+  opacity: 1;
+}
+
+.linkCard h3 {
+  position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    font-family: 'Deadpool-Movie';
+    font-size: 40px;
+    text-shadow: -2px 4px 7px BLACK;
+    line-height: 1;
+    opacity: 0;
+}
+
+@keyframes textAnimation {
+  0%{opacity: 0; bottom: 0px;}
+  100%{opacity: 1; bottom: 50px;}
+}
+
+.linkCard:hover h3 {
+    animation-name: textAnimation;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation-fill-mode: both;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+}
+
+.overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 999999999999999999;
+}
+
+.bar {
+  height: 105vh;
+  width: 10vw;
+  background: #1a1a1a;
+}
+
+@media(max-width:545px) {
+  .linkCard h3 {
+    font-size: 30px;
+  }
+}
